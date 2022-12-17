@@ -63,6 +63,7 @@ const update = async (req,res) => {
 
 const get = async (req,res) => {
     try {
+
         const response = await cityService.getCity(req.params.id);
         return res.status(200).json({
             data : response,
@@ -71,6 +72,7 @@ const get = async (req,res) => {
             err : {}
         })
     } catch (error) {
+        console.log(typeof req.params.id);
         return res.status(500).json({
             data : {},
             success : false,
