@@ -1,3 +1,4 @@
+const city = require('../models/city');
 const { CityRepository } = require('../repository/index');
 
 class CityService {
@@ -27,6 +28,15 @@ class CityService {
     async getCity(cityId){
         try {
             const city = await this.cityRepository.getCity(cityId);
+            return city;
+        } catch (error) {
+            throw {error};
+        }
+    }
+
+    async updateCity(cityId, data){
+        try {
+            const city = await this.cityRepository.updateCity(cityId,data);
             return city;
         } catch (error) {
             throw {error};
