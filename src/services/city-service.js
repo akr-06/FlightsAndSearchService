@@ -10,6 +10,7 @@ class CityService {
             const city = await this.cityRepository.createCity(data);
             return city;
         } catch (error) {
+            console.log(error);
             throw {error};
         }
     }
@@ -32,3 +33,5 @@ class CityService {
         }
     }
 }
+
+module.exports = CityService;
