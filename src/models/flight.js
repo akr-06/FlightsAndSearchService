@@ -62,3 +62,16 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Flight;
 };
+
+/*
+
+flightNumber,
+airplaneId,
+departureAirportId,
+arrivalAirportId,
+arrivalTime,
+departureTime,
+price,
+boardingGate
+
+*/
