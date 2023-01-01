@@ -13,6 +13,7 @@ router.route('/city').post(CityController.create).get(CityController.getAll);
 router.route('/city/:id').delete(CityController.destroy).patch(CityController.update).get(CityController.get);
 
 router.route('/flights').post(FlightMiddlewares.validateCreateFlight,FlightController.create).get(FlightController.getAll);
+router.route('/flights/:id').get(FlightController.get).patch(FlightController.update);
 
 router.route('/airports').post(AirportController.create);
 

@@ -15,7 +15,7 @@ const create = async (req,res) => {
             departureTime : req.body.departureTime,
             price : req.body.price
         }
-
+        
         const flight = await flightService.createFlight(flightRequestData);
         return res.status(201).json({
             data : flight,
@@ -53,8 +53,49 @@ const getAll = async (req,res) => {
     }
 }
 
+const get = async (req,res) => {
+    try {
+        const response = await flightService.getFlight(req.params.id);
+        return res.status(200).json({
+            data : response,
+            success : true,
+            err : {},
+            message : "Successfully fetched the flights"
+        })
+    } catch (error) {
+        return res.status(500).json({
+            data : {},
+            success : false,
+            message : "Unable to fetch",
+            err : error
+        })
+    }
+}
+
+const update = async (req,res) => {
+    try {
+        const response = await flightService.updateFlight(req.params.id,req.body);
+        return res.status(200).json({
+            data : response,
+            success : true,
+            err : {},
+            message : "Successfully updated the flight"
+        })
+    } catch (error) {
+        console.log("Error in update in controller");
+        return res.status(500).json({
+            data : {},
+            success : false,
+            err : error,
+            message : "Unable to update"
+        })
+    }
+}
+
 
 module.exports = {
     create,
     getAll,
+    get,
+    update
 }
